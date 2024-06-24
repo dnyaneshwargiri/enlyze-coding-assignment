@@ -3,6 +3,8 @@
   "references": [
     {
       "path": "./tsconfig.node.json"
-    }
+    },
+    { "path": "./kpi-builder/tsconfig.json" },
+    { "path": "./kpi-svc/tsconfig.json" }
   ]
 }

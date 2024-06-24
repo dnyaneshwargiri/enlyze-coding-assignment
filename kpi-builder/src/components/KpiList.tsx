@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Modal } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useKpiStore } from "../store/useKpiStore";
-import { KPI } from "../../../libraries";
+import { KPI } from "./../types/KPI";
 import KpiModal from "./KpiModal";
 
 const KpiList: React.FC = () => {
