@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Table, Button, Modal } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useKpiStore } from "../store/useKpiStore";
-import { KPI, Variable } from "../types/KPI";
+import { KPI, Variable } from "../../library/index";
 import KpiModal from "./KpiModal";
 import "./KpiList.css"; // Importing the CSS file
 
@@ -56,7 +56,7 @@ const KpiList: React.FC = () => {
     {
       title: "Actions",
       key: "actions",
-      render: (_: any, record: KPI) => (
+      render: (_: null | undefined, record: KPI) => (
         <React.Fragment>
           <Button
             type="text"

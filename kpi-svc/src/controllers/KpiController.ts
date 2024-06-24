@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { KPI } from "../types/KPI";
+import { KPI } from "../../../library/types/KPI";
 import fs from "fs";
 import path from "path";
 
@@ -34,7 +34,7 @@ export const createKpi = (req: Request, res: Response) => {
 export const updateKpi = (req: Request, res: Response) => {
   try {
     const updatedKpi: KPI = req.body;
-    let kpis: KPI[] = JSON.parse(fs.readFileSync(kpisPath, "utf-8"));
+    const kpis: KPI[] = JSON.parse(fs.readFileSync(kpisPath, "utf-8"));
     const index = kpis.findIndex((kpi) => kpi.id === updatedKpi.id);
     if (index === -1) {
       throw new Error("KPI not found");

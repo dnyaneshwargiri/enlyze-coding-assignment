@@ -29,5 +29,5 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src", "jest.setup.ts"]
+  "include": ["src", "library", "jest.setup.ts"]
 }
