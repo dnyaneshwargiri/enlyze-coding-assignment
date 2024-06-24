@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form, Input, Space } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
-import { KPI } from "../../../libraries";
+import { KPI } from "libraries";
 import { v4 as uuidv4 } from "uuid";
 
 interface KpiModalProps {

@@ -19,7 +19,8 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["kpi-builder/src/*"]
+      "@/*": ["kpi-builder/src/*"],
+      "libraries/*": ["../libraries/*"]
     },
 
     /* Linting */
@@ -28,5 +29,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "include": ["src/**/*.ts", "../libraries/*"]
 }

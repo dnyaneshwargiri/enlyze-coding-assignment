@@ -1,5 +1,5 @@
-import create from "zustand";
-import { KPI } from "../../../libraries";
+import { create } from "zustand";
+import { KPI } from "libraries";
 import axios from "axios";
 
 interface KpiState {
