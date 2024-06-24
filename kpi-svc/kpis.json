@@ -1,0 +1,79 @@
+[
+  {
+    "id": "5921a23c-8930-406d-9140-c768b8ec9ec0",
+    "name": "KPI 1",
+    "customer": "Customer A",
+    "conditioning": 0.8,
+    "aggregation": {
+      "median": 50,
+      "average": 75,
+      "integration": 300,
+      "sum": 1500
+    },
+    "variables": [
+      {
+        "id": "v1",
+        "displayName": "Variable 1",
+        "value": 100
+      },
+      {
+        "id": "v2",
+        "displayName": "Variable 2",
+        "value": 200
+      }
+    ]
+  },
+  {
+    "id": "8739c716-496e-480a-ae42-fbee8d11aebd",
+    "name": "KPI 2",
+    "customer": "Customer B",
+    "conditioning": 0.5,
+    "aggregation": {
+      "median": 40,
+      "average": 60,
+      "integration": 200,
+      "sum": 1200
+    },
+    "variables": [
+      {
+        "id": "v1",
+        "displayName": "Variable 1",
+        "value": 150
+      },
+      {
+        "id": "v2",
+        "displayName": "Variable 2",
+        "value": 250
+      },
+      {
+        "id": "v3",
+        "displayName": "Variable 3",
+        "value": 300
+      }
+    ]
+  },
+  {
+    "id": "03b261b6-692a-4f57-a47e-b09a00fce23f",
+    "name": "KPI 3",
+    "customer": "Customer CD",
+    "conditioning": 0.3,
+    "aggregation": {
+      "median": 20,
+      "average": 55,
+      "integration": 600,
+      "sum": 4500
+    },
+    "variables": [
+      {
+        "id": "v1",
+        "displayName": "Variable 1",
+        "value": 600
+      },
+      {
+        "id": "v2",
+        "displayName": "Variable 2",
+        "value": 700
+      }
+    ]
+  }
+]
