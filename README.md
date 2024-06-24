@@ -25,8 +25,7 @@
 
 KPI Builder is an application to manage KPI defintion from customer. One can access a list of KPIs, create, edit and delete KPI.
 
-![KPI Builder Web UI](https://github.com/dnyaneshwargiri/enlyze-coding-assignment/blob/main/images/screenshot-1.png)
-![KPI Builder Web UI](https://github.com/dnyaneshwargiri/enlyze-coding-assignment/blob/main/images/screenshot-2.png)
+[![Watch the video](https://github.com/dnyaneshwargiri/enlyze-coding-assignment/blob/main/images/screen-recording.mp4)
 
 ### Built With
 
