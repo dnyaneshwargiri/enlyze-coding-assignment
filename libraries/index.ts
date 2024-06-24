@@ -1,3 +1,3 @@
-import { KPI, Variable } from "./types/KPI";
+import { KPI, Aggregation, Variable } from "./types/KPI";
 
-export type { KPI, Variable };
+export type { KPI, Aggregation, Variable };

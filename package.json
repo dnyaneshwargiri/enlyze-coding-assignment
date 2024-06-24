@@ -8,7 +8,8 @@
     "kpi-svc"
   ],
   "scripts": {
-    "dev": "yarn workspace kpi-builder vite",
+    "dev": "yarn workspace kpi-builder dev",
+    "serve": "yarn workspace kpi-builder serve",
     "build": "yarn workspace kpi-builder tsc -b && vite build",
     "svc:start": "yarn workspace kpi-svc build && yarn workspace kpi-svc start",
     "svc:dev": "yarn workspace kpi-svc dev",

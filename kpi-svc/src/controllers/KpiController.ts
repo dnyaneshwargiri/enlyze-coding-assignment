@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { KPI } from "../../../libraries/types/KPI";
 import fs from "fs";
 import path from "path";
+import { computeAggregations, computeConditioning } from "../kpi-execution";
 
 const kpisPath =
   process.env.NODE_ENV === "production"
@@ -10,8 +11,13 @@ const kpisPath =
 
 export const getAllKpis = (req: Request, res: Response) => {
   try {
-    const kpis = JSON.parse(fs.readFileSync(kpisPath, "utf-8"));
-    res.status(200).json(kpis);
+    const kpis: KPI[] = JSON.parse(fs.readFileSync(kpisPath, "utf-8"));
+    const kpisWithCalculations = kpis.map((kpi) => ({
+      ...kpi,
+      aggregation: computeAggregations(kpi),
+      conditioning: computeConditioning(kpi),
+    }));
+    res.status(200).json(kpisWithCalculations);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error retrieving KPIs" });

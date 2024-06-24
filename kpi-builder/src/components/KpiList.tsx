@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Modal } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useKpiStore } from "../store/useKpiStore";
-import { KPI } from "libraries";
+import { KPI } from "../../../libraries";
 import KpiModal from "./KpiModal";
 
 const KpiList: React.FC = () => {
@@ -54,6 +54,35 @@ const KpiList: React.FC = () => {
             {variable.displayName}: {variable.value}
           </div>
         )),
+    },
+    {
+      title: "Conditioning",
+      dataIndex: "conditioning",
+      key: "conditioning",
+      render: (conditioning: number | undefined) => conditioning ?? "N/A",
+    },
+    {
+      title: "Aggregation",
+      dataIndex: "aggregation",
+      key: "aggregation",
+      render: (
+        aggregation:
+          | {
+              median: number;
+              average: number;
+              integration: number;
+              sum: number;
+            }
+          | undefined
+      ) =>
+        aggregation ? (
+          <div>
+            Median: {aggregation.median}, Average: {aggregation.average},
+            Integration: {aggregation.integration}, Sum: {aggregation.sum}
+          </div>
+        ) : (
+          "N/A"
+        ),
     },
     {
       title: "Actions",

@@ -66,7 +66,7 @@ Below are instructions on setting up your project locally.
 3. Run KPI Builder app
 
    ```sh
-    yarn start /* production */
+    yarn serve /* production */
     yarn dev  /* dev mode */
    ```
 

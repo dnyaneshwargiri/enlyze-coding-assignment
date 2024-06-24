@@ -7,7 +7,7 @@ export type KPI = {
   variables?: Variable[];
 };
 
-type Aggregation = {
+export type Aggregation = {
   median: number;
   average: number;
   integration: number;
