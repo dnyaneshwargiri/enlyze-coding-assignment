@@ -1,4 +1,4 @@
-import { KPI, Aggregation } from "./../../libraries/";
+import { KPI, Aggregation } from "../../libraries";
 
 export function computeAggregations(kpi: KPI): Aggregation {
   return {

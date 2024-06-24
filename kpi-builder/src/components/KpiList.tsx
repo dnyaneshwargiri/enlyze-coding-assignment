@@ -31,6 +31,10 @@ const KpiList: React.FC = () => {
     });
   };
 
+  const handleModalClose = async () => {
+    await fetchKpis();
+  };
+
   const columns = [
     {
       title: "Name",
@@ -127,6 +131,7 @@ const KpiList: React.FC = () => {
             await addKpi(kpi);
           }
           setIsModalVisible(false);
+          handleModalClose();
         }}
         editKpi={editKpi}
       />

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { KPI } from "../../../libraries/types/KPI";
 import fs from "fs";
 import path from "path";
-import { computeAggregations, computeConditioning } from "../kpi-execution";
+import { computeAggregations, computeConditioning } from "../KpiExecution";
 
 const kpisPath =
   process.env.NODE_ENV === "production"
