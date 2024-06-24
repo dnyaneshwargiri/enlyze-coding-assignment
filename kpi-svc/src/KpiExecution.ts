@@ -1,4 +1,6 @@
-import { KPI, Aggregation } from "../../libraries";
+import { KPI, Aggregation, Variable } from "../../libraries";
+
+// Implement your logic here
 
 export function computeAggregations(kpi: KPI): Aggregation {
   return {
@@ -10,26 +12,40 @@ export function computeAggregations(kpi: KPI): Aggregation {
 }
 
 function calculateMedian(kpi: KPI): number {
-  // Implement your logic here
+  const values = kpi.variables;
+  if (values) {
+    if (values.length === 0) return 0;
+    values.sort((a: Variable, b: Variable) => a.value - b.value);
+    const mid = Math.floor(values.length / 2);
+
+    const median =
+      values.length % 2 !== 0
+        ? values[mid].value
+        : (values[mid - 1].value + values[mid].value) / 2;
+    return parseFloat(median.toFixed(2));
+  }
   return 0;
 }
 
 function calculateAverage(kpi: KPI): number {
-  // Implement your logic here
-  return 0;
+  const average = calculateSum(kpi) / (kpi.variables?.length || 1);
+  return parseFloat(average.toFixed(2));
 }
 
 function calculateIntegration(kpi: KPI): number {
-  // Implement your logic here
+  // TODO
+  kpi;
   return 0;
 }
 
 function calculateSum(kpi: KPI): number {
-  // Implement your logic here
-  return 0;
+  const sum =
+    kpi.variables?.reduce((acc, variable) => acc + variable.value, 0) || 0;
+  return parseFloat(sum.toFixed(2));
 }
 
 export function computeConditioning(kpi: KPI): number {
-  // Implement your logic here
+  // TODO
+  kpi;
   return 0;
 }

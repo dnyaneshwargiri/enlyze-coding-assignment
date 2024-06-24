@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=production node dist/index.js",
     "dev": "NODE_ENV=development 'ts-node' src/server.ts",
-    "build": "tsc && npm-run-all bundle copy-kpis cleanup",
+    "build": "tsc && npm-run-all bundle copy-kpis && yarn cleanup",
     "bundle": "ncc build src/server.ts -m",
     "copy-kpis": "ncp ./kpis.json ./dist/kpis.json",
     "cleanup": "rimraf src/**/*.js"

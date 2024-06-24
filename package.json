@@ -9,9 +9,9 @@
   ],
   "scripts": {
     "dev": "yarn workspace kpi-builder dev",
-    "serve": "yarn workspace kpi-builder serve",
+    "serve": "yarn workspace kpi-builder build && serve",
     "build": "yarn workspace kpi-builder tsc -b && vite build",
-    "svc:start": "yarn workspace kpi-svc build && yarn workspace kpi-svc start",
+    "svc:start": "yarn workspace kpi-svc build && yarn workspace kpi-svc cleanup && yarn workspace kpi-svc start",
     "svc:dev": "yarn workspace kpi-svc dev",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "jest"
