@@ -27,7 +27,7 @@ KPI Builder is an application to manage KPI defintion from customer. One can acc
 
 https://github.com/dnyaneshwargiri/enlyze-coding-assignment/assets/34788823/f603d9c7-9b39-48e9-a1aa-e9cea4826a15
 
-OpenAPI Spec https://petstore.swagger.io/?url=https://github.com/dnyaneshwargiri/enlyze-coding-assignment/blob/main/kpi-svc/openapi.yaml
+OpenAPI Spec https://github.com/dnyaneshwargiri/enlyze-coding-assignment/blob/main/kpi-svc/openapi.yaml
 ### Built With
 
 Below are frameworks/ libraries used to bootstrap this project.
