@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
-import { KPI } from "../types/KPI";
+import { KPI } from "../../library";
 type KpiState = {
   kpis: KPI[];
   addKpi: (kpi: Omit<KPI, "id">) => void;

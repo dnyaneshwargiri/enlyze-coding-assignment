@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "svc:start": "yarn workspace kpi-svc build && yarn workspace kpi-svc start",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "serve": "vite preview",
     "test": "jest"
