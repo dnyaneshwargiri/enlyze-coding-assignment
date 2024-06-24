@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  title: KPI Service API
+  description: API endpoints for managing KPIs
+  version: 1.0.0
+servers:
+  - url: http://localhost:9999/api
+    description: Local development server
+paths:
+  /kpis:
+    get:
+      summary: Get all KPIs
+      responses:
+        "200":
+          description: A list of KPIs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/KPI"
+    post:
+      summary: Create a new KPI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/KPI"
+      responses:
+        "200":
+          description: Created KPI
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KPI"
+  /kpis/{id}:
+    get:
+      summary: Get a KPI by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID of the KPI to get
+      responses:
+        "200":
+          description: A single KPI object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KPI"
+    put:
+      summary: Update a KPI
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID of the KPI to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/KPI"
+      responses:
+        "200":
+          description: Updated KPI
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KPI"
+    delete:
+      summary: Delete a KPI
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID of the KPI to delete
+      responses:
+        "204":
+          description: KPI deleted
+components:
+  schemas:
+    KPI:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        customer:
+          type: string
+        conditioning:
+          type: number
+        aggregation:
+          type: object
+          properties:
+            median:
+              type: number
+            average:
+              type: number
+            integration:
+              type: number
+            sum:
+              type: number
+        variables:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              displayName:
+                type: string
+              value:
+                type: number
