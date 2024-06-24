@@ -1,118 +1,94 @@
 import React, { useState } from "react";
-import { useKpiStore } from "../store/useKpiStore";
-import { Table, Button, Input, Modal } from "antd";
+import { Table, Button, Modal } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import { KPI } from "../types/KPI";
+import { useKpiStore } from "../store/useKpiStore";
+import { KPI, Variable } from "../types/KPI";
+import KpiModal from "./KpiModal";
+import "./KpiList.css"; // Importing the CSS file
 
 const KpiList: React.FC = () => {
   const { kpis, addKpi, updateKpi, deleteKpi } = useKpiStore();
-  const [newKpi, setNewKpi] = useState<{ name: string; value: number }>({
-    name: "",
-    value: 0,
-  });
-  const [editKpi, setEditKpi] = useState<KPI | null>(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [editKpi, setEditKpi] = useState<Partial<KPI> | null>(null);
 
   const handleAddKpi = () => {
-    if (newKpi.name && newKpi.value) {
-      addKpi({ ...newKpi, id: Date.now() });
-      setNewKpi({ name: "", value: 0 });
-    }
+    setEditKpi({ name: "", customer: "", variables: [] });
+    setIsModalVisible(true);
   };
 
-  const handleUpdateKpi = () => {
-    if (editKpi) {
-      updateKpi(editKpi);
-      setEditKpi(null);
-    }
+  const handleEditKpi = (kpi: KPI) => {
+    setEditKpi(kpi);
+    setIsModalVisible(true);
   };
 
-  const handleDeleteKpi = (id: number) => {
+  const handleDeleteKpi = (id: string) => {
     Modal.confirm({
       title: "Are you sure you want to delete this KPI?",
       onOk: () => deleteKpi(id),
     });
   };
 
+  const handleOk = (kpi: Partial<KPI>) => {
+    if (kpi.id) {
+      updateKpi(kpi as KPI);
+    } else {
+      addKpi(kpi as Omit<KPI, "id">);
+    }
+    setIsModalVisible(false);
+    setEditKpi(null);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    setEditKpi(null);
+  };
+
   const columns = [
+    { title: "Name", dataIndex: "name", key: "name" },
+    { title: "Customer", dataIndex: "customer", key: "customer" },
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      render: (text: string, record: KPI) =>
-        editKpi?.id === record.id ? (
-          <Input
-            value={editKpi.name}
-            onChange={(e) => setEditKpi({ ...editKpi, name: e.target.value })}
-          />
-        ) : (
-          text
-        ),
-    },
-    {
-      title: "Value",
-      dataIndex: "value",
-      key: "value",
-      render: (text: number, record: KPI) =>
-        editKpi?.id === record.id ? (
-          <Input
-            type="number"
-            value={editKpi.value}
-            onChange={(e) =>
-              setEditKpi({ ...editKpi, value: Number(e.target.value) })
-            }
-          />
-        ) : (
-          text
-        ),
+      title: "Variables",
+      dataIndex: "variables",
+      key: "variables",
+      render: (variables: Variable[]) =>
+        variables.map((v) => `${v.displayName}: ${v.value}`).join(", "),
     },
     {
       title: "Actions",
       key: "actions",
       render: (_: any, record: KPI) => (
-        <div>
-          {editKpi?.id === record.id ? (
-            <Button type="primary" onClick={handleUpdateKpi}>
-              Update
-            </Button>
-          ) : (
-            <Button
-              icon={<EditOutlined />}
-              onClick={() => setEditKpi(record)}
-            />
-          )}
+        <React.Fragment>
           <Button
+            type="text"
+            icon={<EditOutlined />}
+            onClick={() => handleEditKpi(record)}
+          />
+          <Button
+            type="text"
             icon={<DeleteOutlined />}
             onClick={() => handleDeleteKpi(record.id)}
-            danger
           />
-        </div>
+        </React.Fragment>
       ),
     },
   ];
 
   return (
-    <div>
-      <div style={{ marginBottom: 16 }}>
-        <Input
-          placeholder="KPI Name"
-          value={newKpi.name}
-          onChange={(e) => setNewKpi({ ...newKpi, name: e.target.value })}
-          style={{ width: 200, marginRight: 8 }}
-        />
-        <Input
-          type="number"
-          placeholder="KPI Value"
-          value={newKpi.value}
-          onChange={(e) =>
-            setNewKpi({ ...newKpi, value: Number(e.target.value) })
-          }
-          style={{ width: 200, marginRight: 8 }}
-        />
-        <Button type="primary" onClick={handleAddKpi}>
-          Add New KPI
-        </Button>
-      </div>
-      <Table columns={columns} dataSource={kpis} rowKey="id" />
+    <div className="kpi-list-container">
+      <Button
+        type="link"
+        onClick={handleAddKpi}
+        style={{ marginBottom: "16px" }}
+      >
+        Add New KPI
+      </Button>
+      <Table dataSource={kpis} columns={columns} rowKey="id" />
+      <KpiModal
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        initialKpi={editKpi}
+      />
     </div>
   );
 };

@@ -1,16 +1,19 @@
 import { create } from "zustand";
+import { v4 as uuidv4 } from "uuid";
 import { KPI } from "../types/KPI";
-
-interface KpiState {
+type KpiState = {
   kpis: KPI[];
-  addKpi: (kpi: KPI) => void;
-  updateKpi: (updatedKpi: KPI) => void;
-  deleteKpi: (id: number) => void;
-}
+  addKpi: (kpi: Omit<KPI, "id">) => void;
+  updateKpi: (kpi: KPI) => void;
+  deleteKpi: (id: string) => void;
+};
 
 export const useKpiStore = create<KpiState>((set) => ({
   kpis: [],
-  addKpi: (kpi) => set((state) => ({ kpis: [...state.kpis, kpi] })),
+  addKpi: (newKpi) =>
+    set((state) => ({
+      kpis: [...state.kpis, { ...newKpi, id: uuidv4() }],
+    })),
   updateKpi: (updatedKpi) =>
     set((state) => ({
       kpis: state.kpis.map((kpi) =>

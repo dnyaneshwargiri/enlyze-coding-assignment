@@ -1,0 +1,12 @@
+.kpi-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.ant-table-wrapper {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
