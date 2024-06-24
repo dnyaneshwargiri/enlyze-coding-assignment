@@ -19,7 +19,7 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["kpi-builder/src/*"]
     },
 
     /* Linting */
@@ -28,6 +28,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src", "library", "jest.setup.ts"]
+  }
 }

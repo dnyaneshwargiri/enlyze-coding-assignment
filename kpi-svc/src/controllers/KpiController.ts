@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { KPI } from "../../../library/types/KPI";
+import { KPI } from "../../../libraries/types/KPI";
 import fs from "fs";
 import path from "path";
 

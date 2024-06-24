@@ -1,6 +1,7 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import KpiList from "../components/KpiList";
+import KpiList from "./KpiList";
+import React from "react";
 
 // Mock uuid
 jest.mock("uuid", () => ({
