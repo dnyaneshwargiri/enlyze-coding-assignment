@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Modal } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useKpiStore } from "../store/useKpiStore";
-import { Aggregation, KPI, Variable } from "./../../../libraries/dist";
+import { Aggregation, KPI, Variable } from "kpi-library";
 import KpiModal from "./KpiModal";
 import "./KpiList.css";
 

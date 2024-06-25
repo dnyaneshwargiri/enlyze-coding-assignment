@@ -1,4 +1,4 @@
-import { KPI, Aggregation, Variable } from "../../libraries/dist";
+import { KPI, Aggregation, Variable } from "kpi-library";
 
 // Implement your logic here
 export function computeAggregations(kpi: KPI): Aggregation {
