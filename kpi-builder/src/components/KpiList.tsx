@@ -5,31 +5,50 @@ import { useKpiStore } from "../store/useKpiStore";
 import { KPI } from "./../../../libraries/dist";
 import KpiModal from "./KpiModal";
 
+export const fetchKpisHelper = async (fetchKpis: () => Promise<void>) => {
+  await fetchKpis();
+};
+
+export const handleAddKpiHelper = (
+  setEditKpi: React.Dispatch<React.SetStateAction<KPI | null>>,
+  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  setEditKpi(null);
+  setIsModalVisible(true);
+};
+
+export const handleEditKpiHelper = (
+  kpi: KPI,
+  setEditKpi: React.Dispatch<React.SetStateAction<KPI | null>>,
+  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  setEditKpi(kpi);
+  setIsModalVisible(true);
+};
+
+export const handleDeleteKpiHelper = (
+  id: string,
+  deleteKpi: (id: string) => Promise<void>
+) => {
+  Modal.confirm({
+    title: "Are you sure you want to delete this KPI?",
+    onOk: () => deleteKpi(id),
+  });
+};
+
 const KpiList: React.FC = () => {
   const { kpis, fetchKpis, addKpi, updateKpi, deleteKpi } = useKpiStore();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editKpi, setEditKpi] = useState<KPI | null>(null);
 
   useEffect(() => {
-    fetchKpis();
+    fetchKpisHelper(fetchKpis);
   }, [fetchKpis]);
 
-  const handleAddKpi = () => {
-    setEditKpi(null);
-    setIsModalVisible(true);
-  };
-
-  const handleEditKpi = (kpi: KPI) => {
-    setEditKpi(kpi);
-    setIsModalVisible(true);
-  };
-
-  const handleDeleteKpi = (id: string) => {
-    Modal.confirm({
-      title: "Are you sure you want to delete this KPI?",
-      onOk: () => deleteKpi(id),
-    });
-  };
+  const handleAddKpi = () => handleAddKpiHelper(setEditKpi, setIsModalVisible);
+  const handleEditKpi = (kpi: KPI) =>
+    handleEditKpiHelper(kpi, setEditKpi, setIsModalVisible);
+  const handleDeleteKpi = (id: string) => handleDeleteKpiHelper(id, deleteKpi);
 
   const handleModalClose = async () => {
     await fetchKpis();

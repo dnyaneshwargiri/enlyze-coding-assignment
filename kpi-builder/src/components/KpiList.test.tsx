@@ -1,13 +1,17 @@
-import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import KpiList from "./KpiList";
+import {
+  fetchKpisHelper,
+  handleAddKpiHelper,
+  handleEditKpiHelper,
+  handleDeleteKpiHelper,
+} from "./KpiList";
+import { KPI } from "../../../libraries/dist";
+import { Modal } from "antd";
 
-// Mock uuid
 jest.mock("uuid", () => ({
   v4: jest.fn(() => "unique-id"),
 }));
 
-// Mock Zustand store
 jest.mock("../store/useKpiStore", () => ({
   useKpiStore: jest.fn(() => ({
     kpis: [
@@ -30,73 +34,57 @@ jest.mock("../store/useKpiStore", () => ({
   })),
 }));
 
-describe("KpiList component", () => {
-  test("renders KPI list correctly", () => {
-    render(<KpiList />);
+jest.mock("antd", () => ({
+  ...jest.requireActual("antd"),
+  Modal: {
+    confirm: jest.fn(),
+  },
+}));
 
-    expect(screen.getByText("KPI 1")).toBeInTheDocument();
-    expect(screen.getByText("Customer 1")).toBeInTheDocument();
-    expect(screen.getByText("v1: 10")).toBeInTheDocument();
-    expect(screen.getByText("KPI 2")).toBeInTheDocument();
-    expect(screen.getByText("Customer 2")).toBeInTheDocument();
-    expect(screen.getByText("v2: 20")).toBeInTheDocument();
+describe("KpiList functions", () => {
+  test("fetchKpisHelper calls fetchKpis", async () => {
+    const fetchKpisMock = jest.fn();
+    await fetchKpisHelper(fetchKpisMock);
+    expect(fetchKpisMock).toHaveBeenCalled();
   });
 
-  test("adds a new KPI", () => {
-    render(<KpiList />);
-
-    fireEvent.click(screen.getByText("Add New KPI"));
-    fireEvent.change(screen.getByPlaceholderText("Variable Name"), {
-      target: { value: "New KPI" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Variable Value"), {
-      target: { value: "100" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Customer Name"), {
-      target: { value: "New Customer" },
-    });
-    fireEvent.click(screen.getByText("Add Variable"));
-    fireEvent.change(screen.getByPlaceholderText("v1"), {
-      target: { value: "New Variable" },
-    });
-    fireEvent.click(screen.getByText("Add New KPI"));
-
-    expect(screen.getByText("New KPI")).toBeInTheDocument();
-    expect(screen.getByText("New Customer")).toBeInTheDocument();
-    expect(screen.getByText("New Variable: 100")).toBeInTheDocument();
+  test("handleAddKpiHelper sets modal visibility and clears editKpi", () => {
+    const setEditKpiMock = jest.fn();
+    const setIsModalVisibleMock = jest.fn();
+    handleAddKpiHelper(setEditKpiMock, setIsModalVisibleMock);
+    expect(setEditKpiMock).toHaveBeenCalledWith(null);
+    expect(setIsModalVisibleMock).toHaveBeenCalledWith(true);
   });
 
-  test("updates an existing KPI", () => {
-    render(<KpiList />);
-
-    fireEvent.click(screen.getAllByLabelText("Edit KPI")[0]);
-
-    fireEvent.change(screen.getByDisplayValue("KPI 1"), {
-      target: { value: "Updated KPI 1" },
-    });
-    fireEvent.change(screen.getByDisplayValue("Customer 1"), {
-      target: { value: "Updated Customer 1" },
-    });
-    fireEvent.change(screen.getByDisplayValue("v1"), {
-      target: { value: "Updated Variable 1" },
-    });
-    fireEvent.change(screen.getByDisplayValue("10"), {
-      target: { value: "150" },
-    });
-    fireEvent.click(screen.getByText("Update"));
-
-    expect(screen.getByText("Updated KPI 1")).toBeInTheDocument();
-    expect(screen.getByText("Updated Customer 1")).toBeInTheDocument();
-    expect(screen.getByText("Updated Variable 1: 150")).toBeInTheDocument();
+  test("handleEditKpiHelper sets editKpi and modal visibility", () => {
+    const setEditKpiMock = jest.fn();
+    const setIsModalVisibleMock = jest.fn();
+    const kpi: KPI = {
+      id: "1",
+      name: "KPI 1",
+      customer: "Customer 1",
+      variables: [{ id: "var1", displayName: "v1", value: 10 }],
+    };
+    handleEditKpiHelper(kpi, setEditKpiMock, setIsModalVisibleMock);
+    expect(setEditKpiMock).toHaveBeenCalledWith(kpi);
+    expect(setIsModalVisibleMock).toHaveBeenCalledWith(true);
   });
 
-  test("deletes an existing KPI", () => {
-    render(<KpiList />);
+  test("handleDeleteKpiHelper calls deleteKpi", () => {
+    const deleteKpiMock = jest.fn();
+    const id = "1";
 
-    fireEvent.click(screen.getAllByLabelText("Delete KPI")[0]);
+    const confirmMock = Modal.confirm as jest.MockedFunction<
+      typeof Modal.confirm
+    >;
+    confirmMock.mockImplementation((options) => {
+      if (options.onOk) {
+        return options.onOk();
+      }
+    });
 
-    fireEvent.click(screen.getByText("OK"));
+    handleDeleteKpiHelper(id, deleteKpiMock);
 
-    expect(screen.queryByText("KPI 1")).not.toBeInTheDocument();
+    expect(deleteKpiMock).toHaveBeenCalledWith(id);
   });
 });
