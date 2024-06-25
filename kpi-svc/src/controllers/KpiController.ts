@@ -1,13 +1,16 @@
 import fs from "fs";
 import path from "path";
+import dotenv from "dotenv";
 import { Request, Response } from "express";
 import { KPI } from "../../../libraries/dist";
 import { computeAggregations, computeConditioning } from "../KpiExecution";
 
+dotenv.config();
+
 const kpisPath =
   process.env.NODE_ENV === "production"
-    ? path.resolve(__dirname, "kpis.json")
-    : path.resolve(__dirname, "../../kpis.json");
+    ? path.resolve(__dirname, process.env.KPI_FILE_PATH_PRODUCTION || "")
+    : path.resolve(__dirname, process.env.KPI_FILE_PATH_DEV || "");
 
 export const getAllKpis = (req: Request, res: Response) => {
   try {
