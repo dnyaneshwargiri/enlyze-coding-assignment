@@ -23,7 +23,7 @@
 
 ## About The Project
 
-KPI Builder is an application to manage KPI defintion for your project. One can access a list of KPIs, create, edit and delete KPI thorugh this application.
+KPI Builder is an application to manage KPI defintion for your project. One can access a list of KPIs, create, edit and delete KPI through this application.
 
 https://github.com/dnyaneshwargiri/enlyze-coding-assignment/assets/34788823/f603d9c7-9b39-48e9-a1aa-e9cea4826a15
 
