@@ -80,7 +80,7 @@ Below are instructions on setting up your project locally.
 
    Application uses `yarn workspaces`
 
-## Usage
+## Test and Lint
 
 Run test cases
 
