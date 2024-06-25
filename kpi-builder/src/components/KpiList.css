@@ -10,3 +10,15 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.add-new-button {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.padding-20 {
+  padding: 20px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}

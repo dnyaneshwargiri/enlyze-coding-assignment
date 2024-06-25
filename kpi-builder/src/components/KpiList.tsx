@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Modal } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useKpiStore } from "../store/useKpiStore";
-import { KPI } from "./../../../libraries/dist";
+import { Aggregation, KPI, Variable } from "./../../../libraries/dist";
 import KpiModal from "./KpiModal";
+import "./KpiList.css";
 
 export const fetchKpisHelper = async (fetchKpis: () => Promise<void>) => {
   await fetchKpis();
@@ -69,9 +70,7 @@ const KpiList: React.FC = () => {
       title: "Variables",
       dataIndex: "variables",
       key: "variables",
-      render: (
-        variables: Array<{ id: string; displayName: string; value: number }>
-      ) =>
+      render: (variables: Array<Variable>) =>
         variables.map((variable) => (
           <div key={variable.id}>
             {variable.displayName}: {variable.value}
@@ -88,16 +87,7 @@ const KpiList: React.FC = () => {
       title: "Aggregation",
       dataIndex: "aggregation",
       key: "aggregation",
-      render: (
-        aggregation:
-          | {
-              median: number;
-              average: number;
-              integration: number;
-              sum: number;
-            }
-          | undefined
-      ) =>
+      render: (aggregation: Aggregation | undefined) =>
         aggregation ? (
           <div>
             Median: {aggregation.median}, Average: {aggregation.average},
@@ -128,13 +118,13 @@ const KpiList: React.FC = () => {
   ];
 
   return (
-    <div style={{ padding: "20px" }}>
-      <div style={{ textAlign: "center", marginBottom: "20px" }}>
+    <div className="padding-20">
+      <div className="add-new-button">
         <Button
           type="link"
           onClick={handleAddKpi}
           icon={<PlusOutlined />}
-          style={{ marginBottom: "20px" }}
+          className="margin-bottom-20"
         >
           Add New KPI
         </Button>

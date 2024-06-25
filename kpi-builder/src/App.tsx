@@ -1,14 +1,12 @@
-import "./App.css";
-import KpiList from "./components/KpiList";
-import enlyzeLogo from "./assets/enlyze.svg";
 import React from "react";
+import KpiList from "./components/KpiList";
+import "./App.css";
+import enlyzeLogo from "./assets/enlyze.svg";
 
 const App: React.FC = () => {
   return (
     <div>
-      <div
-        style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}
-      >
+      <div className="enlyze-logo">
         <img src={enlyzeLogo} alt="Enlyze Logo" height={60} width={180} />
       </div>
 

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form, Input, Space } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
-import { KPI } from "./../../../libraries/dist";
 import { v4 as uuidv4 } from "uuid";
+import { KPI } from "./../../../libraries/dist";
+import "./KpiModal.css";
 
 interface KpiModalProps {
   visible: boolean;
@@ -89,13 +90,9 @@ const KpiModal: React.FC<KpiModalProps> = ({
           <Input placeholder="Masteflex" />
         </Form.Item>
         <Form.Item label="Variables">
-          <Space direction="vertical" style={{ width: "100%" }}>
+          <Space direction="vertical" className="space-container">
             {variables.map((variable) => (
-              <Space
-                key={variable.id}
-                style={{ display: "flex", marginBottom: 8 }}
-                align="baseline"
-              >
+              <Space key={variable.id} className="space" align="baseline">
                 <Input
                   placeholder="Variable Display Name"
                   value={variable.displayName}

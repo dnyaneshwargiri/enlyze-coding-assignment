@@ -1,0 +1,7 @@
+.space-container {
+  width: 100%;
+}
+.space {
+  display: flex;
+  margin-bottom: 8;
+}

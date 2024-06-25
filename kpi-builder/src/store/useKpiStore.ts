@@ -1,6 +1,6 @@
+import axios from "axios";
 import { create } from "zustand";
 import { KPI } from "../../../libraries/dist";
-import axios from "axios";
 
 interface KpiState {
   kpis: KPI[];
