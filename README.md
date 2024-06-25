@@ -28,6 +28,7 @@ KPI Builder is an application to manage KPI defintion for your project. One can 
 https://github.com/dnyaneshwargiri/enlyze-coding-assignment/assets/34788823/f603d9c7-9b39-48e9-a1aa-e9cea4826a15
 
 OpenAPI Spec https://github.com/dnyaneshwargiri/enlyze-coding-assignment/blob/main/kpi-svc/openapi.yaml
+Can be tried out over https://editor.swagger.io/
 
 ### Built With
 
