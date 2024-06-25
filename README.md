@@ -61,7 +61,7 @@ Below are instructions on setting up your project locally.
    ```
 3. Compile kpi library
     ```sh
-      yarn libraries:compile
+    yarn libraries:compile
     ```
 
 4. Run KPI-SVC
@@ -74,8 +74,8 @@ Below are instructions on setting up your project locally.
 5. Run KPI Builder app
 
    ```sh
-     yarn serve /* production */
-     yarn dev  /* dev mode */
+    yarn serve /* production */
+    yarn dev  /* dev mode */
    ```
 
    Application uses `yarn workspaces`
