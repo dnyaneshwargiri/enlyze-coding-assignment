@@ -1,7 +1,6 @@
 import { KPI, Aggregation, Variable } from "../../libraries/dist";
 
 // Implement your logic here
-
 export function computeAggregations(kpi: KPI): Aggregation {
   return {
     median: calculateMedian(kpi),

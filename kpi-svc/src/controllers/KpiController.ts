@@ -12,7 +12,7 @@ const kpisPath =
     ? path.resolve(__dirname, process.env.KPI_FILE_PATH_PRODUCTION || "")
     : path.resolve(__dirname, process.env.KPI_FILE_PATH_DEV || "");
 
-export const getAllKpis = (req: Request, res: Response) => {
+export const getAllKpis = async (req: Request, res: Response) => {
   try {
     const kpis: KPI[] = JSON.parse(fs.readFileSync(kpisPath, "utf-8"));
     const kpisWithCalculations = kpis.map((kpi) => ({
@@ -27,9 +27,9 @@ export const getAllKpis = (req: Request, res: Response) => {
   }
 };
 
-export const createKpi = (req: Request, res: Response) => {
+export const createKpi = async (req: Request, res: Response) => {
   try {
-    const newKpi: KPI = req.body;
+    const newKpi: Omit<KPI, "conditioning" | "aggregation"> = req.body;
     const kpis: KPI[] = JSON.parse(fs.readFileSync(kpisPath, "utf-8"));
     kpis.push(newKpi);
     fs.writeFileSync(kpisPath, JSON.stringify(kpis, null, 2));
@@ -40,9 +40,9 @@ export const createKpi = (req: Request, res: Response) => {
   }
 };
 
-export const updateKpi = (req: Request, res: Response) => {
+export const updateKpi = async (req: Request, res: Response) => {
   try {
-    const updatedKpi: KPI = req.body;
+    const updatedKpi: Omit<KPI, "conditioning" | "aggregation"> = req.body;
     const kpis: KPI[] = JSON.parse(fs.readFileSync(kpisPath, "utf-8"));
     const index = kpis.findIndex((kpi) => kpi.id === updatedKpi.id);
     if (index === -1) {
@@ -57,7 +57,7 @@ export const updateKpi = (req: Request, res: Response) => {
   }
 };
 
-export const deleteKpi = (req: Request, res: Response) => {
+export const deleteKpi = async (req: Request, res: Response) => {
   try {
     const id: string = req.params.id;
     let kpis: KPI[] = JSON.parse(fs.readFileSync(kpisPath, "utf-8"));

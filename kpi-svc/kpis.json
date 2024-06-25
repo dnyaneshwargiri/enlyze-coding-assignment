@@ -1,20 +1,13 @@
 [
   {
-    "id": "5921a23c-8930-406d-9140-c768b8ec9ec0",
     "name": "KPI 1",
     "customer": "Customer A",
-    "conditioning": 0.8,
-    "aggregation": {
-      "median": 50,
-      "average": 75,
-      "integration": 300,
-      "sum": 1500
-    },
+    "id": "5921a23c-8930-406d-9140-c768b8ec9ec0",
     "variables": [
       {
         "id": "v1",
         "displayName": "Variable 1",
-        "value": 100
+        "value": 300
       },
       {
         "id": "v2",
@@ -73,6 +66,28 @@
         "id": "v2",
         "displayName": "Variable 2",
         "value": 700
+      }
+    ]
+  },
+  {
+    "name": "test",
+    "customer": "test customer",
+    "id": "0a8fa47d-133f-4240-affd-af5bd2d91aee",
+    "variables": [
+      {
+        "id": "c4d86811-a3ed-4ca4-817d-f689bdb044e7",
+        "displayName": "Variable 1",
+        "value": 2
+      },
+      {
+        "id": "6b60e55e-3726-4aa5-bdd5-287af8d40843",
+        "displayName": "Variable 2",
+        "value": 3
+      },
+      {
+        "id": "6193d5bc-15c7-4679-9a09-30af2b68afc3",
+        "displayName": "Variable 3",
+        "value": 4
       }
     ]
   }
