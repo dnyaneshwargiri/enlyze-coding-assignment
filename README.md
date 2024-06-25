@@ -61,51 +61,55 @@ Below are instructions on setting up your project locally.
     yarn install
    ```
 3. Compile kpi library
-  ```sh
-    yarn libraries:compile
-  ```
+
+```sh
+  yarn libraries:compile
+```
 
 4. Run KPI-SVC
-  ```sh
-  yarn svc:start /* production */
-  yarn svc:dev /* dev mode */
-  ```
+
+   ```sh
+   yarn svc:start /* production */
+   yarn svc:dev /* dev mode */
+   ```
 
 5. Run KPI Builder app
+
    ```sh
-    yarn serve /* production */
-    yarn dev  /* dev mode */
+     yarn serve /* production */
+     yarn dev  /* dev mode */
    ```
 
    Application uses `yarn workspaces`
-## To run application via Docker Image
-
-1. Build application for production
-   ```sh
-    yarn workspace kpi-builder build 
-    yarn workpspace kpi-svc build
-   ```
-2. Build Docker image
-   ```sh
-    docker build -t enlyze-kpi-app .
-   ```
-3. Run Docker image
-   ```sh
-    docker run -p 9999:9999 -p 5173:5173 enlyze-kpi-app
-   ```
 
 ## Usage
 
 Run test cases
 
 ```sh
- yarn test
+yarn test
 ```
 
 Check for linting Warnings, Error
 
 ```sh
- yarn lint
+yarn lint
 ```
+
+## To run application via Docker Image
+
+1. Build application for production
+   ```sh
+     yarn workspace kpi-builder build
+     yarn workpspace kpi-svc build
+   ```
+2. Build Docker image
+   ```sh
+     docker build -t enlyze-kpi-app .
+   ```
+3. Run Docker image
+   ```sh
+     docker run -p 9999:9999 -p 5173:5173 enlyze-kpi-app
+   ```
 
 Please be informed commits are intentionly not squashed.
