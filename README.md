@@ -60,9 +60,9 @@ Below are instructions on setting up your project locally.
     yarn install
    ```
 3. Compile kpi library
-  ```sh
-    yarn libraries:compile
-  ```
+    ```sh
+      yarn libraries:compile
+    ```
 
 4. Run KPI-SVC
 
