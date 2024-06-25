@@ -1,0 +1,13 @@
+{
+  "name": "kpi-library",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.5.2"
+  },
+  "scripts": {
+    "compile": "tsc"
+  }
+}

@@ -28,6 +28,7 @@ KPI Builder is an application to manage KPI defintion from customer. One can acc
 https://github.com/dnyaneshwargiri/enlyze-coding-assignment/assets/34788823/f603d9c7-9b39-48e9-a1aa-e9cea4826a15
 
 OpenAPI Spec https://github.com/dnyaneshwargiri/enlyze-coding-assignment/blob/main/kpi-svc/openapi.yaml
+
 ### Built With
 
 Below are frameworks/ libraries used to bootstrap this project.
@@ -59,21 +60,24 @@ Below are instructions on setting up your project locally.
    ```sh
     yarn install
    ```
-3. Run KPI Builder app
+3. Compile kpi library
+  ```sh
+    yarn libraries:compile
+  ```
 
+4. Run KPI-SVC
+  ```sh
+  yarn svc:start /* production */
+  yarn svc:dev /* dev mode */
+  ```
+
+5. Run KPI Builder app
    ```sh
     yarn serve /* production */
     yarn dev  /* dev mode */
    ```
 
-4. Run KPI-SVC
-
-   ```sh
-    yarn svc:start /* production */
-    yarn svc:dev /* dev mode */
-   ```
-
-   Note: Application uses `yarn workspaces`
+   Application uses `yarn workspaces`
 
 ## Usage
 

@@ -1,4 +1,4 @@
-import { KPI, Aggregation, Variable } from "../../libraries";
+import { KPI, Aggregation, Variable } from "../../libraries/dist";
 
 // Implement your logic here
 
