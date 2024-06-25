@@ -78,6 +78,21 @@ Below are instructions on setting up your project locally.
    ```
 
    Application uses `yarn workspaces`
+## To run application via Docker Image
+
+1. Build application for production
+   ```sh
+    yarn workspace kpi-builder build 
+    yarn workpspace kpi-svc build
+   ```
+2. Build Docker image
+   ```sh
+    docker build -t enlyze-kpi-app .
+   ```
+3. Run Docker image
+   ```sh
+    docker run -p 9999:9999 -p 5173:5173 enlyze-kpi-app
+   ```
 
 ## Usage
 

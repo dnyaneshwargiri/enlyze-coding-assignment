@@ -1,8 +1,10 @@
+import { ArithmaticCalculation } from "./ArithmaticCalculation";
+
 export type KPI = {
   id: string;
   name: string;
   customer: string;
-  conditioning?: number;
+  conditioning?: ArithmaticCalculation;
   aggregation?: Aggregation;
   variables?: Variable[];
 };
