@@ -107,3 +107,5 @@ Check for linting Warnings, Error
 ```sh
  yarn lint
 ```
+
+Please be informed commits are intentionly not squashed.
