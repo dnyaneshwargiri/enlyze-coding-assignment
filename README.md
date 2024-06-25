@@ -38,7 +38,6 @@ Below are frameworks/ libraries used to bootstrap this project.
 - ![Ant-Design](https://img.shields.io/badge/-AntDesign-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white)
 - ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 - ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-- ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
 
 ## Getting Started
 
@@ -61,10 +60,9 @@ Below are instructions on setting up your project locally.
     yarn install
    ```
 3. Compile kpi library
-
-```sh
-  yarn libraries:compile
-```
+  ```sh
+    yarn libraries:compile
+  ```
 
 4. Run KPI-SVC
 
