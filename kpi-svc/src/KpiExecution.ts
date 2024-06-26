@@ -46,5 +46,6 @@ function calculateSum(kpi: KPI): number {
 export function computeConditioning(kpi: KPI): ArithmaticCalculation {
   // TODO
   kpi;
+  // Mocking
   return "((v1 + v2) - (v4 - v3)/3";
 }
