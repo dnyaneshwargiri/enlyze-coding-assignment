@@ -1,12 +1,12 @@
 import "@testing-library/jest-dom";
 import { Modal } from "antd";
-import { KPI } from "../../../libraries/dist";
+import { KPI } from "kpi-library";
 import {
   fetchKpisHelper,
   handleAddKpiHelper,
   handleEditKpiHelper,
   handleDeleteKpiHelper,
-} from "./KpiList";
+} from "../components/KpiList";
 
 jest.mock("uuid", () => ({
   v4: jest.fn(() => "unique-id"),
