@@ -100,11 +100,14 @@ yarn lint
 1. Build application for production
    ```sh
      yarn workspace kpi-builder build
-     yarn workpspace kpi-svc build
+     yarn workspace kpi-svc build
    ```
 2. Build Docker image
    ```sh
-     docker build -t enlyze-kpi-app .
+     chmod +x docker.build.sh
+   ```
+    ```sh
+     ./docker.build.sh production kpis.json
    ```
 3. Run Docker image
    ```sh
@@ -112,3 +115,9 @@ yarn lint
    ```
 
 Please be informed commits are intentionly not squashed.
+
+## Open issue
+  https://github.com/yarnpkg/yarn/issues/1297
+
+
+ 
