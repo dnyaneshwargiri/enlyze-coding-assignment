@@ -81,7 +81,7 @@ const KpiList: React.FC = () => {
       title: "Conditioning",
       dataIndex: "conditioning",
       key: "conditioning",
-      render: (conditioning: number | undefined) => conditioning ?? "N/A",
+      render: (conditioning: string | undefined) => conditioning ?? "N/A",
     },
     {
       title: "Aggregation",

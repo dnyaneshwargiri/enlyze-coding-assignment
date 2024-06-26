@@ -1,1 +1,1 @@
-export type ArithmaticCalculation = number;
+export type ArithmaticCalculation = string;

@@ -1,4 +1,4 @@
-import { KPI, Aggregation, Variable } from "kpi-library";
+import { KPI, Aggregation, Variable, ArithmaticCalculation } from "kpi-library";
 
 // Implement your logic here
 export function computeAggregations(kpi: KPI): Aggregation {
@@ -43,8 +43,8 @@ function calculateSum(kpi: KPI): number {
   return parseFloat(sum.toFixed(2));
 }
 
-export function computeConditioning(kpi: KPI): number {
+export function computeConditioning(kpi: KPI): ArithmaticCalculation {
   // TODO
   kpi;
-  return 0;
+  return "((v1 + v2) - (v4 - v3)/3";
 }
